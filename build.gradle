@@ -26,12 +26,14 @@ targetCompatibility = 1.8
 }
 
 dependencies {
-//	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
 
 //	runtime('mysql:mysql-connector-java')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('com.jayway.jsonpath:json-path:2.1.0')
+	testRuntime('com.h2database:h2:1.4.191')
 }
 
 task wrapper(type: Wrapper) {
