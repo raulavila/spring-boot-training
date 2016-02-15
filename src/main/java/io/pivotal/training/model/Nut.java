@@ -1,13 +1,16 @@
 package io.pivotal.training.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Nut {
 
+    @GeneratedValue
     @Id
-    private long id;
+    private Long id;
+
     private String name;
 
     public Nut() {
@@ -19,5 +22,9 @@ public class Nut {
 
     public String getName() {
         return name;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

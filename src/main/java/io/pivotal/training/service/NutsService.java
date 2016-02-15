@@ -16,8 +16,8 @@ public class NutsService {
         this.nutsRepository = nutsRepository;
     }
 
-    public void create(Nut nut) {
-        nutsRepository.save(nut);
+    public Nut create(Nut nut) {
+        return nutsRepository.save(nut);
     }
 
     public List<Nut> list() {

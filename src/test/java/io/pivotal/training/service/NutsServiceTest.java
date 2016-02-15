@@ -13,6 +13,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.Mockito.*;
 
 public class NutsServiceTest {
@@ -31,10 +32,13 @@ public class NutsServiceTest {
     @Test
     public void create() {
         Nut almond = createNut("almond");
+        Nut createdNut = mock(Nut.class);
+        when(nutsRepository.save(almond)).thenReturn(createdNut);
 
-        nutsService.create(almond);
+        Nut savedNut = nutsService.create(almond);
 
         verify(nutsRepository).save(almond);
+        assertThat(savedNut, is(createdNut));
     }
 
     private Nut createNut(String name) {
