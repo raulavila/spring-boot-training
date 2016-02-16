@@ -5,6 +5,7 @@ import io.pivotal.training.model.Nut;
 import io.pivotal.training.repository.NutsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,14 +18,17 @@ public class NutsService {
         this.nutsRepository = nutsRepository;
     }
 
+    @Transactional
     public Nut create(Nut nut) {
         return nutsRepository.save(nut);
     }
 
+    @Transactional
     public List<Nut> list() {
         return nutsRepository.findAll();
     }
 
+    @Transactional
     public boolean delete(Long id) {
         boolean exists = nutsRepository.exists(id);
         if (exists)
@@ -32,6 +36,7 @@ public class NutsService {
         return exists;
     }
 
+    @Transactional
     public Nut get(Long id) {
         boolean exists = nutsRepository.exists(id);
 
