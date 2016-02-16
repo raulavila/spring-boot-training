@@ -1,5 +1,6 @@
 package io.pivotal.training.service;
 
+import io.pivotal.training.errors.NutNotFoundException;
 import io.pivotal.training.model.Nut;
 import io.pivotal.training.repository.NutsRepository;
 import org.junit.Before;
@@ -54,11 +55,53 @@ public class NutsServiceTest {
     @Test
     public void list_whenOne() {
         List<Nut> expectedNutsList = mock(List.class);
-
         when(nutsRepository.findAll()).thenReturn(expectedNutsList);
 
         List<Nut> nutsList = nutsService.list();
 
         assertThat(nutsList, is(expectedNutsList));
+    }
+
+    @Test
+    public void deleteNutById() throws Exception {
+        Long nutId = 1L;
+        when(nutsRepository.exists(nutId)).thenReturn(true);
+
+        boolean result = nutsService.delete(nutId);
+
+        verify(nutsRepository).delete(nutId);
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void deleteNotExistingNut() throws Exception {
+        Long nutId = 1L;
+        when(nutsRepository.exists(nutId)).thenReturn(false);
+
+        boolean result = nutsService.delete(nutId);
+
+        verify(nutsRepository, never()).delete(nutId);
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void getNut() throws Exception {
+        Long nutId = 1L;
+        Nut expectedNut = mock(Nut.class);
+        when(nutsRepository.exists(nutId)).thenReturn(true);
+        when(nutsRepository.getOne(nutId)).thenReturn(expectedNut);
+
+        Nut nut = nutsService.get(nutId);
+
+        assertThat(nut, is(notNullValue()));
+        assertThat(nut, is(expectedNut));
+    }
+
+    @Test(expected = NutNotFoundException.class)
+    public void getNotExistingNut() throws Exception {
+        Long nutId = 42L;
+        when(nutsRepository.exists(nutId)).thenReturn(false);
+
+        nutsService.get(nutId);
     }
 }

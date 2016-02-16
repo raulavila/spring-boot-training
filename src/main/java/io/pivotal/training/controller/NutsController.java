@@ -12,7 +12,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController("/nuts")
+@RestController
+@RequestMapping("nuts")
 public class NutsController {
 
     private final NutsService nutsService;
@@ -22,9 +23,15 @@ public class NutsController {
         this.nutsService = nutsService;
     }
 
-    @RequestMapping
+    @RequestMapping(method = RequestMethod.GET)
     public List<Nut> listAll() {
         return nutsService.list();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public ResponseEntity<Nut> get(@PathVariable Long id) {
+        Nut nut = nutsService.get(id);
+        return new ResponseEntity<Nut>(nut, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -40,4 +47,12 @@ public class NutsController {
         return new ResponseEntity<Nut>(createdNut, responseHeaders, HttpStatus.CREATED);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        boolean deleted = nutsService.delete(id);
+        if (deleted)
+            return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+        else
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+    }
 }
