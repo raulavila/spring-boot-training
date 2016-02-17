@@ -1,6 +1,6 @@
 package io.pivotal.training.api;
 
-import io.pivotal.training.SpringRestTrainingApplication;
+import io.pivotal.training.SpringTrainingApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,14 +16,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Map;
-
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SpringRestTrainingApplication.class)
+@SpringApplicationConfiguration(classes = SpringTrainingApplication.class)
 @WebAppConfiguration
 @Transactional
 public class SpringRestTrainingApplicationTests {

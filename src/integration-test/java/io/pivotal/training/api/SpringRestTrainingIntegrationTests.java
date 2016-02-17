@@ -1,6 +1,6 @@
 package io.pivotal.training.api;
 
-import io.pivotal.training.SpringRestTrainingApplication;
+import io.pivotal.training.SpringTrainingApplication;
 import io.pivotal.training.model.Phone;
 import io.pivotal.training.repository.PhoneRepository;
 import org.junit.After;
@@ -26,7 +26,7 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SpringRestTrainingApplication.class)
+@SpringApplicationConfiguration(classes = SpringTrainingApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:1234")
 public class SpringRestTrainingIntegrationTests {
