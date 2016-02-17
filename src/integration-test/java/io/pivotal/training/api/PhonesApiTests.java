@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.is;
 @SpringApplicationConfiguration(classes = SpringTrainingApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:1234")
-public class SpringRestTrainingIntegrationTests {
+public class PhonesApiTests {
 
     private final String BASE_URL = "http://localhost:1234/phones/";
     private RestTemplate rest;
