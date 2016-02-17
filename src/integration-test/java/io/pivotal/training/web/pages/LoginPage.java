@@ -23,6 +23,8 @@ public class LoginPage extends FluentPage {
     }
 
     public void validLogin() {
+        isAt();
+
         fill(".username").with("user");
         fill(".password").with("my-super-password");
         loginButton.click();
