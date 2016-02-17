@@ -8,12 +8,12 @@ import static org.fluentlenium.assertj.FluentLeniumAssertions.assertThat;
 
 public class HomePageTest extends AbstractWebTest {
     @Page
-    public HomePage page;
+    public HomePage homePage;
 
     @Test
     public void visitHomePage() throws Exception {
-        goTo(page);
+        goTo(homePage);
 
-        assertThat(page).isAt();
+        assertThat(homePage).isAt();
     }
 }
