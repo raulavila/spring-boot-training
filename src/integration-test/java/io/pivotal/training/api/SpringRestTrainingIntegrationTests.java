@@ -1,5 +1,6 @@
-package io.pivotal.training;
+package io.pivotal.training.api;
 
+import io.pivotal.training.SpringRestTrainingApplication;
 import io.pivotal.training.model.Phone;
 import io.pivotal.training.repository.PhoneRepository;
 import org.junit.After;

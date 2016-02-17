@@ -1,5 +1,6 @@
-package io.pivotal.training;
+package io.pivotal.training.api;
 
+import io.pivotal.training.SpringRestTrainingApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
