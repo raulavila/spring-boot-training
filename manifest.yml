@@ -1,0 +1,6 @@
+---
+applications:
+  - name: spring-boot-training
+    path: build/libs/spring-rest-training-0.0.1-SNAPSHOT.jar
+    services:
+      - mysql

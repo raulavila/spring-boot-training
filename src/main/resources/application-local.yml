@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_boot_training
+    username: root
+    password: password
