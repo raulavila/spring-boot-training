@@ -29,4 +29,8 @@ public class LoginPage extends FluentPage {
         fill(".password").with("my-super-password");
         loginButton.click();
     }
+
+    public void displaysLoggedOut() {
+        assertThat(find(".logged-out").getText()).contains("You have been logged out");
+    }
 }

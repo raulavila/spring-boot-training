@@ -6,8 +6,6 @@ import org.fluentlenium.core.annotation.Page;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.fluentlenium.assertj.FluentLeniumAssertions.assertThat;
-
 public class HelloPageTest extends AbstractWebTest {
 
     @Page
@@ -24,16 +22,17 @@ public class HelloPageTest extends AbstractWebTest {
 
     @Test
     public void visitHelloPage_whenNotLoggedIn() throws Exception {
-        assertThat(helloPage).isAt();
+        helloPage.isAt();
     }
 
     @Test
     public void logoutFromHelloPage() throws Exception {
         helloPage.logout();
 
-        assertThat(loginPage).isAt();
+        loginPage.isAt();
+        loginPage.displaysLoggedOut();
 
         goTo(helloPage);
-        assertThat(loginPage).isAt();
+        loginPage.isAt();
     }
 }
