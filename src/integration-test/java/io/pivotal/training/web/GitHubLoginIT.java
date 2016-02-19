@@ -6,7 +6,7 @@ import org.fluentlenium.core.annotation.Page;
 import org.junit.Test;
 
 
-public class GitHubLoginTest extends AbstractWebTest {
+public class GitHubLoginIT extends AbstractWebTest {
 
     @Page
     private HelloPage helloPage;

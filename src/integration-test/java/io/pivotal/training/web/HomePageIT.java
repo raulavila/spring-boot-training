@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.fluentlenium.assertj.FluentLeniumAssertions.assertThat;
 
-public class HomePageTest extends AbstractWebTest {
+public class HomePageIT extends AbstractWebTest {
     @Page
     public HomePage homePage;
 

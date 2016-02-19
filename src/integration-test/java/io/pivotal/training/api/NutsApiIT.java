@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringApplicationConfiguration(classes = SpringTrainingApplication.class)
 @WebAppConfiguration
 @Transactional
-public class NutsApiTests {
+public class NutsApiIT {
 
 	public static final String ALMOND_JSON = "{\"name\":\"almond\"}";
 
