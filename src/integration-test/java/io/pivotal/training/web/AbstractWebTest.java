@@ -10,6 +10,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import static io.pivotal.training.web.environment.IntegrationTestConfig.BASE_URL;
 import static io.pivotal.training.web.environment.IntegrationTestConfig.SERVER_PORT;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,5 +23,10 @@ public abstract class AbstractWebTest extends FluentTest {
     @Override
     public WebDriver getDefaultDriver() {
         return webDriver;
+    }
+
+    @Override
+    public String getDefaultBaseUrl() {
+        return BASE_URL;
     }
 }

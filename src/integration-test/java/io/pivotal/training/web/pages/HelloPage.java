@@ -14,7 +14,7 @@ public class HelloPage extends FluentPage {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/hello";
+        return "/hello";
     }
 
     @Override

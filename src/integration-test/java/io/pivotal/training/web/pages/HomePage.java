@@ -9,11 +9,15 @@ public class HomePage extends FluentPage {
 
     @Override
     public String getUrl() {
-        return BASE_URL + "/";
+        return "/";
     }
 
     @Override
     public void isAt() {
         assertThat(title()).contains("Home");
+    }
+
+    public void displaysLoggedOut() {
+        assertThat(find(".logged-out").getText()).contains("You have been logged out");
     }
 }
