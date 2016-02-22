@@ -81,6 +81,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.security.oauth:spring-security-oauth2')
 
+	compile("org.springframework.boot:spring-boot-devtools")
+
 	compile('org.webjars:bootstrap:3.3.4')
 	compile('org.webjars:jquery:2.1.4')
 
@@ -98,4 +100,8 @@ idea {
 	module {
 		scopes.TEST.plus += [ configurations.integrationTestCompile ]
 	}
+}
+
+bootRun {
+	addResources = true
 }
