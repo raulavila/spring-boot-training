@@ -12,7 +12,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/login**", "/nuts/**", "/phones/**").permitAll()
+                .antMatchers("/",
+                            "/login**",
+                            "/webjars/**",
+                            "/nuts/**",
+                            "/phones/**").permitAll()
                 .anyRequest().authenticated()
             .and()
                 .csrf().disable().anonymous();
