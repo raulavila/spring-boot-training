@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head><title>Fragments.</title></head>
+<body>
+    <th:block th:fragment="liveReload">
+        <script th:if="${#arrays.contains(@environment.getActiveProfiles(),'local')}">
+        document.write('\x3c' + 'script src="http://' + (location.host ||
+            'localhost').split(':')[0] +
+            ':35729/livereload.js"\x3e\x3c/' + 'script\x3e')
+        </script>
+    </th:block>
+</body>
+</html>
