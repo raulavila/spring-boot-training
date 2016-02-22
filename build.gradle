@@ -6,7 +6,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
 
@@ -99,6 +99,8 @@ dependencies {
 idea {
 	module {
 		scopes.TEST.plus += [ configurations.integrationTestCompile ]
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
 	}
 }
 
