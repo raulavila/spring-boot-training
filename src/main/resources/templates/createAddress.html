@@ -6,11 +6,17 @@
     <title>Create address</title>
 </head>
 <body>
-    <form id="myForm" action="/address" method="post">
-        <input name="name"/>
-        <input name="surname"/>
-        <input name="postcode"/>
-        <input type="submit" value="Submit"/>
+    <form id="my-form" th:object="${address}" action="#" th:action="@{/address}" method="post">
+        <label th:for="name">Name:</label>
+        <input type="text" th:field="*{name}" />
+
+        <label th:for="name">Surname:</label>
+        <input type="text" th:field="*{surname}" />
+
+        <label th:for="name">Postcode:</label>
+        <input type="text" th:field="*{postcode}" />
+
+        <button class="submit" type="submit">Submit</button>
     </form>
 </body>
 </html>

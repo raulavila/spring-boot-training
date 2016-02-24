@@ -1,5 +1,7 @@
 package io.pivotal.training.controller;
 
+import io.pivotal.training.model.Address;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +21,8 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.util.Locale;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -66,7 +70,8 @@ public class PageControllerTest {
     public void showFormPage() throws Exception {
         mvc.perform(get("/createAddress"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("createAddress"));
+                .andExpect(view().name("createAddress"))
+                .andExpect(model().attribute("address", instanceOf(Address.class)));
     }
 
     @Test
@@ -78,6 +83,6 @@ public class PageControllerTest {
                         .param("postcode", "SW1A 1AA"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("address"))
-                .andExpect(model().attributeExists("name", "surname", "postcode"));
+                .andExpect(model().attribute("address", equalTo(new Address("Raul", "Avila", "SW1A 1AA"))));
     }
 }

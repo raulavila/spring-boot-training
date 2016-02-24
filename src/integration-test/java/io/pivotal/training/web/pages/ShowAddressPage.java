@@ -1,5 +1,6 @@
 package io.pivotal.training.web.pages;
 
+import io.pivotal.training.model.Address;
 import org.fluentlenium.core.FluentPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,9 +16,9 @@ public class ShowAddressPage extends FluentPage {
         assertThat(title()).contains("Show address");
     }
 
-    public void displaysAddress(String name, String surname, String postcode) {
-        assertThat(find(".name").getText()).isEqualTo(name);
-        assertThat(find(".surname").getText()).isEqualTo(surname);
-        assertThat(find(".postcode").getText()).isEqualTo(postcode);
+    public void displaysAddress(Address address) {
+        assertThat(find(".name").getText()).isEqualTo(address.getName());
+        assertThat(find(".surname").getText()).isEqualTo(address.getSurname());
+        assertThat(find(".postcode").getText()).isEqualTo(address.getPostcode());
     }
 }

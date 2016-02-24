@@ -1,5 +1,6 @@
 package io.pivotal.training.web;
 
+import io.pivotal.training.model.Address;
 import io.pivotal.training.web.pages.CreateAddressPage;
 import io.pivotal.training.web.pages.ShowAddressPage;
 import org.fluentlenium.core.annotation.Page;
@@ -25,10 +26,12 @@ public class CreateAddressIT extends AbstractWebTest {
     public void fillForm() throws Exception {
         goTo(createAddressPage);
 
-        createAddressPage.submitAddress("Raul", "Avila", "SW1A 1AA");
+        Address address = new Address("Raul", "Avila", "SW1A 1AA");
+
+        createAddressPage.submitAddress(address);
 
         showAddressPage.isAt();
 
-        showAddressPage.displaysAddress("Raul", "Avila", "SW1A 1AA");
+        showAddressPage.displaysAddress(address);
     }
 }

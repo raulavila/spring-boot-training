@@ -1,8 +1,10 @@
 package io.pivotal.training.controller;
 
+import io.pivotal.training.model.Address;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,22 +26,16 @@ public class PageController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/createAddress")
-    public String form() {
-        return "createAddress";
+    public ModelAndView createAddress() {
+        ModelAndView modelAndView = new ModelAndView("createAddress");
+        modelAndView.addObject("address", new Address());
+        return modelAndView;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/address")
-    public ModelAndView postForm(
-            @RequestParam String name,
-            @RequestParam String surname,
-            @RequestParam String postcode
-    ) {
-
+    public ModelAndView postForm(@ModelAttribute Address address) {
         ModelAndView modelAndView = new ModelAndView("address");
-        modelAndView.addObject("name", name);
-        modelAndView.addObject("surname", surname);
-        modelAndView.addObject("postcode", postcode);
-
+        modelAndView.addObject("address", address);
         return modelAndView;
     }
 }

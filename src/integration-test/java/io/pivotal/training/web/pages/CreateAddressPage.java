@@ -1,5 +1,6 @@
 package io.pivotal.training.web.pages;
 
+import io.pivotal.training.model.Address;
 import org.fluentlenium.core.FluentPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,11 +16,11 @@ public class CreateAddressPage extends FluentPage {
         assertThat(title()).contains("Create address");
     }
 
-    public void submitAddress(String name, String surname, String postcode) {
-        fill("#myForm input[name='name']").with("Raul");
-        fill("#myForm input[name='surname']").with("Avila");
-        fill("#myForm input[name='postcode']").with("SW1A 1AA");
+    public void submitAddress(Address address) {
+        fill("#name").with(address.getName());
+        fill("#surname").with(address.getSurname());
+        fill("#postcode").with(address.getPostcode());
 
-        click("#myForm input[type='submit']");
+        click("#my-form .submit");
     }
 }
