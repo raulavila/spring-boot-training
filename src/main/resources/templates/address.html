@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Show address</title>
+</head>
+<body>
+    <section>
+        <ul>
+            <li>Name: <span class="name" th:text="${name}"></span></li>
+            <li>Surname: <span class="surname" th:text="${surname}"></span></li>
+            <li>Postcode: <span class="postcode" th:text="${postcode}"></span></li>
+        </ul>
+    </section>
+</body>
+</html>

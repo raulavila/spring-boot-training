@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -20,6 +21,8 @@ import java.util.Locale;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -57,5 +60,24 @@ public class PageControllerTest {
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("hello"));
+    }
+
+    @Test
+    public void showFormPage() throws Exception {
+        mvc.perform(get("/createAddress"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("createAddress"));
+    }
+
+    @Test
+    public void postForm() throws Exception {
+        mvc.perform(post("/address")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("name", "Raul")
+                        .param("surname", "Avila")
+                        .param("postcode", "SW1A 1AA"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("address"))
+                .andExpect(model().attributeExists("name", "surname", "postcode"));
     }
 }

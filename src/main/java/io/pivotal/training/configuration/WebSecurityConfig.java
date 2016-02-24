@@ -16,7 +16,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                             "/login**",
                             "/webjars/**",
                             "/nuts/**",
-                            "/phones/**").permitAll()
+                            "/phones/**",
+                            "/createAddress/**",
+                            "/address/**").permitAll()
                 .anyRequest().authenticated()
             .and()
                 .csrf().disable().anonymous();
