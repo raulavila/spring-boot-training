@@ -6,6 +6,11 @@
 </head>
 <body>
     <h1>Hello World!</h1>
+
+    Logged in user: <span sec:authentication="name">Bob</span>
+    <br/>
+    Roles: <span sec:authentication="authorities">[ROLE_USER, ROLE_ADMIN]</span>
+
     <th:block th:include="fragments::liveReload" />
 </body>
 </html>
