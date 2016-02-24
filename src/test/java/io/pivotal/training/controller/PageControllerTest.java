@@ -3,16 +3,22 @@ package io.pivotal.training.controller;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import java.util.Locale;
+
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -29,20 +35,13 @@ public class PageControllerTest {
     @Before
     public void setUp() throws Exception {
         mvc = MockMvcBuilders.standaloneSetup(pageController)
-                .setViewResolvers(getThymeleafViewResolver())
+                .setViewResolvers(getMockViewResolver())
                 .build();
     }
 
-    private ThymeleafViewResolver getThymeleafViewResolver() {
-        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setTemplateMode("HTML5");
-        templateResolver.setPrefix("templates/");
-        templateResolver.setSuffix(".html");
-        SpringTemplateEngine engine = new SpringTemplateEngine();
-        engine.setTemplateResolver(templateResolver);
-
-        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-        viewResolver.setTemplateEngine(engine);
+    private ViewResolver getMockViewResolver() throws Exception{
+        ViewResolver viewResolver = mock(ViewResolver.class);
+        when(viewResolver.resolveViewName(any(String.class), any(Locale.class))).thenReturn(mock(View.class));
         return viewResolver;
     }
 
