@@ -10,12 +10,19 @@ requires one database.
 `export SPRING_PROFILES_ACTIVE=local`, or run `direnv allow`. To tell Spring to use the local profile.
 
 `./gradlew bootRun`
+or
+`mvn spring-boot:run`
 
 ## Run the tests
 
-- `./gradlew clean test` to run unit tests only
-- `./gradlew clean integrationTest` to run integration tests only
-- `./gradlew clean test integrationTest` to run all tests
+Unit tests
+`./gradlew clean test` or `mvn test`
+
+Integration tests
+`./gradlew clean integrationTest` or `mvn clean verify -P integration-test`
+
+All tests
+`./gradlew clean test integrationTest` or `mvn clean test && mvn clean verify -P integration-test`
 
 ## Deploy to Cloud Foundry
 
@@ -27,5 +34,5 @@ First time set up:
 
 For each deployment:
 
-- `./gradlew clean bootRepackage`
+- `./gradlew clean bootRepackage` or `mvn clean package`
 - `cf push`
