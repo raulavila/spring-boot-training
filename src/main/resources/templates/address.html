@@ -3,14 +3,23 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Show address</title>
+    <title th:text="#{title.address.show}"></title>
 </head>
 <body>
     <section>
         <ul>
-            <li>Name: <span class="name" th:text="${address.name}"></span></li>
-            <li>Surname: <span class="surname" th:text="${address.surname}"></span></li>
-            <li>Postcode: <span class="postcode" th:text="${address.postcode}"></span></li>
+            <li>
+                <span th:text="#{address.name}"></span>
+                <span class="name" th:text="${address.name}"></span>
+            </li>
+            <li>
+                <span th:text="#{address.surname}"></span>
+                <span class="surname" th:text="${address.surname}"></span>
+            </li>
+            <li>
+                <span th:text="#{address.postcode}"></span>
+                <span class="postcode" th:text="${address.postcode}"></span>
+            </li>
         </ul>
     </section>
 </body>

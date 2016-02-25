@@ -3,20 +3,20 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Create address</title>
+    <title th:text="#{title.address.create}">Create address</title>
 </head>
 <body>
     <form id="my-form" th:object="${address}" action="#" th:action="@{/address}" method="post">
-        <label th:for="name">Name:</label>
+        <label th:for="name" th:text="#{address.name}"></label>
         <input type="text" th:field="*{name}" />
 
-        <label th:for="name">Surname:</label>
+        <label th:for="surname" th:text="#{address.surname}"></label>
         <input type="text" th:field="*{surname}" />
 
-        <label th:for="name">Postcode:</label>
+        <label th:for="postcode" th:text="#{address.postcode}"></label>
         <input type="text" th:field="*{postcode}" />
 
-        <button class="submit" type="submit">Submit</button>
+        <button class="submit" type="submit" th:text="#{form.submit}"></button>
     </form>
 </body>
 </html>

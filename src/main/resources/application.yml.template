@@ -13,3 +13,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  messages:
+    basename: i18n/messages
+
+logging:
+  level:
+    org.springframework.web: INFO
