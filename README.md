@@ -7,7 +7,16 @@ We wrote this app to learn how to test drive a Spring Boot app. We started with 
 Start a mysql server locally and configure in `src/main/resources/application-local.yml`. The app
 requires one database.
 
-`export SPRING_PROFILES_ACTIVE=local`, or run `direnv allow`. To tell Spring to use the local profile.
+Set the local environment variables:
+
+```
+export SPRING_PROFILES_ACTIVE=local  # To tell Spring to use the local profile.
+
+export SECURITY_OAUTH2_CLIENT_ID=REPLACE_WITH_GITHUB_CLIENT_ID
+export SECURITY_OAUTH2_CLIENT_SECRET=REPLACE_WITH_GITHUB_CLIENT_SECRET
+```
+
+Or copy `.envrc.example to `.envrc`, fill in your GitHub client secrets and run `direnv allow`.
 
 `./gradlew bootRun`
 
